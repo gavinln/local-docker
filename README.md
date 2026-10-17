@@ -91,3 +91,16 @@ Vagrant. The Git environment also provides an [SSH client][200] for Windows.
 [Part 4](https://medium.com/@Shamimw/docker-a-complete-tutorial-part4-docker-registry-8221937bf581)
 
 [Part 5](https://medium.com/@Shamimw/docker-a-complete-tutorial-part-5-docker-storage-and-bind-mounts-17d0db65fdf3)
+## Docker image hub
+
+1. Search Docker hub for official images
+
+```
+docker search --filter is-official=true python
+```
+
+2. Pull a Python image
+
+```
+docker pull library/python:3.14.8-slim-trixie
+```
