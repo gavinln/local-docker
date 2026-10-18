@@ -36,3 +36,9 @@ rmi:  ## remove docker image
 stats:  ## stats for docker container
 	docker stats $(APP)
 	
+.PHONY: build-clean
+build-clean:  ## run all steps without stoping to run server
+	@$(MAKE) --no-print-directory -s build
+	docker run --name $(APP) $(IMAGE):latest find .
+	@$(MAKE) --no-print-directory -s rm
+	@$(MAKE) --no-print-directory -s rmi
