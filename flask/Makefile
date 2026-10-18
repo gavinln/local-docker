@@ -5,9 +5,12 @@ SCRIPT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 help:  ## help for this Makefile
 	@grep -E '^[a-zA-Z0-9_\-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
+IMAGE := my-flask-app
+APP := my-app
+
 .PHONY: build
 build:  ## build docker image
-	docker build -t my-flask-app:latest . 
+	docker build -t $(IMAGE):latest . 
 
 .PHONY: build-verbose
 build-verbose:  ## build docker image with verbose messages
@@ -15,17 +18,21 @@ build-verbose:  ## build docker image with verbose messages
 
 .PHONY: run 
 run:  ## run docker container
-	docker run -p 5000:5000 --name my-app my-flask-app:latest
+	docker run -p 5000:5000 --name $(APP) $(IMAGE):latest
 
 .PHONY: stop
 stop:  ## stop docker container
-	docker stop my-app
+	docker stop $(APP)
 
 .PHONY: rm
 rm:  ## remove docker container
-	docker rm my-app
+	docker rm $(APP)
+
+.PHONY: rmi
+rmi:  ## remove docker image
+	docker rmi $(IMAGE):latest
 	
 .PHONY: stats
 stats:  ## stats for docker container
-	docker stats my-app
+	docker stats $(APP)
 	
