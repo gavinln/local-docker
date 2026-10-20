@@ -9,3 +9,6 @@
 *.log
 .vscode/
 flask-kube/.kube/
+
+# ignore tmp files directory
+/tmp
