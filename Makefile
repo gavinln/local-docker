@@ -8,3 +8,7 @@ help:  ## help for this Makefile
 .PHONY: docker-version
 docker-version:  ## display docker version
 	docker --version
+
+.PHONY: markdownlint
+markdownlint:  ## run markdown file lint
+	markdownlint --disable MD029 MD040 -- '**/*.md'
