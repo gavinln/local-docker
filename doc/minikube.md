@@ -1,8 +1,8 @@
-## Run Docker using Minikube
+# Run Docker using Minikube
 
-### Install Minikube
+## Install Minikube
 
-1. Download minikube from https://github.com/kubernetes/minikube
+1. Download minikube from `https://github.com/kubernetes/minikube`
 
 2. Rename it to minikube.exe and make sure it is in your path
 
@@ -55,7 +55,7 @@
 
   ```
 
-### Create a Kubernetes echo service
+## Create a Kubernetes echo service
 
 1. List existing srevices
 
@@ -66,7 +66,8 @@
 2. Create a hello-minikube deployment
 
   ```
-  kubectl run hello-minikube --image=gcr.io/google_containers/echoserver:1.4 --port=8080
+  kubectl run hello-minikube \
+    --image=gcr.io/google_containers/echoserver:1.4 --port=8080
   ```
 
 3. Create a service for hello-minikube deployment
@@ -96,7 +97,8 @@
 7. Open the browser to the address in the previous step
 
   ```
-  @FOR /f "tokens=*" %i IN ('minikube service hello-minikube --url') DO explorer %i
+  @FOR /f "tokens=*" %i IN ('minikube service hello-minikube --url') \
+    DO explorer %i
   ```
 
 8. Clean up service and deployment
@@ -111,7 +113,7 @@
   minikube stop
   ```
 
-### Build the flask-kube app
+## Build the flask-kube app
 
 1. Change to the flask-kube directory
 
@@ -143,7 +145,8 @@
   docker run -it --rm flask-kube:latest python -V
   ```
 
-### Share a folder on the minikube VM
+## Share a folder on the minikube VM
+
 1. List the running VMs (should include minikube)
 
   ```
@@ -159,13 +162,15 @@
 3. List only the shared folder information
 
   ```
-  VBoxManage showvminfo minikube --machinereadable | grep SharedFolder
+  VBoxManage showvminfo minikube \
+    --machinereadable | grep SharedFolder
   ```
 
 4. To share the current folder as ws (may have to run minikube stop)
 
   ```
-  VBoxManage sharedfolder add minikube --name ws --hostpath %cd% --automount
+  VBoxManage sharedfolder add minikube --name ws \
+    --hostpath %cd% --automount
   ```
 
 5. To remove the shared folder type
@@ -174,7 +179,7 @@
   VBoxManage sharedfolder remove minikube --name ws
   ```
 
-### Create a requirements.txt file for Python libraries
+## Create a requirements.txt file for Python libraries
 
 1. Run the docker container by mounting a local folder
 
@@ -201,7 +206,7 @@
   exit
   ```
 
-### Run the flask app using code shared on local machine
+## Run the flask app using code shared on local machine
 
 1. Get the ip address of the Kubernetes VM
 
@@ -233,7 +238,7 @@
   http://192.168.99.100:5000/
   ```
 
-### Run the flask app using code copied to the container
+## Run the flask app using code copied to the container
 
 1. Get the ip address of the Kubernetes VM
 
@@ -248,9 +253,12 @@
   ```
 
 3. Using the ip address in step 1 above open the browser
-http://192.168.99.100:5000/
 
-### Run the Kubernetes container with the stateless app
+  ```
+  http://192.168.99.100:5000/
+  ```
+
+## Run the Kubernetes container with the stateless app
 
 1. Create a Kubernetes deployment
 
@@ -273,10 +281,11 @@ http://192.168.99.100:5000/
 4. Describe a single pod
 
   ```
-  kubectl get pods -l app=flask-kube -o name | sed s#pods/## | xargs kubectl describe pod
+  kubectl get pods -l app=flask-kube -o name \
+    | sed s#pods/## | xargs kubectl describe pod
   ```
 
-### Create a Kubernetes service to access the app
+## Create a Kubernetes service to access the app
 
 1. Create a Kubernetes deployment
 
@@ -291,11 +300,10 @@ http://192.168.99.100:5000/
   ```
 
 3. Using the port from the previous step and the ip obtained earler open this address
-http://192.168.99.100:32753/
+`http://192.168.99.100:32753/`
 
 4. Delete service & deployment
 
   ```
   kubectl delete service,deployment flask-kube
   ```
-

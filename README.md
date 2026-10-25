@@ -31,6 +31,7 @@ Docker commands and the rest of the Docker containers are created as
 ## Miscellaneous
 
 ### Install Minimal Jupyter notebook
+
 1. Pull minimal Jupyter notebook
 docker pull jupyter/minimal-notebook
 
@@ -91,6 +92,7 @@ Vagrant. The Git environment also provides an [SSH client][200] for Windows.
 [Part 4](https://medium.com/@Shamimw/docker-a-complete-tutorial-part4-docker-registry-8221937bf581)
 
 [Part 5](https://medium.com/@Shamimw/docker-a-complete-tutorial-part-5-docker-storage-and-bind-mounts-17d0db65fdf3)
+
 ## Docker image hub
 
 1. Search Docker hub for official images

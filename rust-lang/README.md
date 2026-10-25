@@ -1,6 +1,7 @@
 # Rust Container From Scratch
 
-The `rust-lang` image is built from `scratch` Docker image. It needs a statically linked Rust binary.
+The `rust-lang` image is built from `scratch` Docker image. It needs a
+statically linked Rust binary.
 
 1. Install the musl Target
 
