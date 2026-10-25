@@ -19,9 +19,10 @@ build-verbose:  ## build docker image with verbose messages
 	docker build -t $(IMAGE):latest -f Dockerfile.pi $(VERBOSE_OPT) . 
 
 .PHONY: run 
-run:  ## run docker container
+run: build  ## run docker container
 	@test -n "$(wk)" || ( echo "wk is not set"; exit 1 )
 	@test -d "$(wk)" || ( echo "$(wk) is not a valid directory"; exit 1 )
+	@test -n "$(DEEPSEEK_API_KEY)" || ( echo "DEEPSEEK_API_KEY is not set"; exit 1 )
 	docker run --rm -it --name $(APP) \
 		-e DEEPSEEK_API_KEY=$$DEEPSEEK_API_KEY \
 		-v "$(wk):/workspace" $(IMAGE):latest
