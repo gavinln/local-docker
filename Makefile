@@ -12,3 +12,11 @@ docker-version:  ## display docker version
 .PHONY: markdownlint
 markdownlint:  ## run markdown file lint
 	markdownlint --disable MD029 MD040 -- '**/*.md'
+
+.PHONY: nixfmt
+nixfmt:  ## format nix files
+	nixfmt $$(find . -name '*.nix')
+
+.PHONY: format
+format:  ## format files
+	uvx pre-commit run --all-files
