@@ -18,11 +18,11 @@ cargo build --release --target x86_64-unknown-linux-musl
 3. Build the image
 
 ```
-docker build -t rust-lang .       
+docker build -t rust-lang .
 ```
 
 5. Run the image
 
 ```
-docker run rust-lang    
+docker run rust-lang
  ```

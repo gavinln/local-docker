@@ -10,13 +10,13 @@ APP := my-app
 
 .PHONY: build
 build:  ## build docker image
-	docker build -t $(IMAGE):latest . 
+	docker build -t $(IMAGE):latest .
 
 .PHONY: build-verbose
 build-verbose:  ## build docker image with verbose messages
-	docker build --no-cache --progress=plain -t my-flask-app:latest . 
+	docker build --no-cache --progress=plain -t my-flask-app:latest .
 
-.PHONY: run 
+.PHONY: run
 run:  ## run docker container
 	docker run -p 5000:5000 --name $(APP) $(IMAGE):latest
 
@@ -31,11 +31,11 @@ rm:  ## remove docker container
 .PHONY: rmi
 rmi:  ## remove docker image
 	docker rmi $(IMAGE):latest
-	
+
 .PHONY: stats
 stats:  ## stats for docker container
 	docker stats $(APP)
-	
+
 .PHONY: build-clean
 build-clean:  ## run all steps without stoping to run server
 	@$(MAKE) --no-print-directory -s build

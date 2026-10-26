@@ -12,13 +12,13 @@ VERBOSE_OPT := --no-cache --progress=plain
 
 .PHONY: build
 build:  ## build docker image
-	docker build -t $(IMAGE):latest -f Dockerfile.pi . 
+	docker build -t $(IMAGE):latest -f Dockerfile.pi .
 
 .PHONY: build-verbose
 build-verbose:  ## build docker image with verbose messages
-	docker build -t $(IMAGE):latest -f Dockerfile.pi $(VERBOSE_OPT) . 
+	docker build -t $(IMAGE):latest -f Dockerfile.pi $(VERBOSE_OPT) .
 
-.PHONY: run 
+.PHONY: run
 run: build  ## run docker container
 	@test -n "$(wk)" || ( echo "wk is not set"; exit 1 )
 	@test -d "$(wk)" || ( echo "$(wk) is not a valid directory"; exit 1 )
@@ -38,11 +38,11 @@ rm:  ## remove docker container
 .PHONY: rmi
 rmi:  ## remove docker image
 	docker rmi $(IMAGE):latest
-	
+
 .PHONY: stats
 stats:  ## stats for docker container
 	docker stats $(APP)
-	
+
 .PHONY: build-clean
 build-clean:  ## run all steps without stoping to run server
 	@$(MAKE) --no-print-directory -s build
