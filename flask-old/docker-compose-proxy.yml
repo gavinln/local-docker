@@ -6,11 +6,9 @@ services:
       - "80:80"
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
-
   web:
     build: .
     environment:
       - VIRTUAL_HOST=flask.local
-
   redis:
     image: "redis:alpine"

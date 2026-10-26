@@ -10,8 +10,8 @@ spec:
         app: flask-kube
     spec:
       containers:
-      - name: flask-kube
-        image: flask-kube:latest
-        imagePullPolicy: Never
-        ports:
-        - containerPort: 5000
+        - name: flask-kube
+          image: flask-kube:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 5000
