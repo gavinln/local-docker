@@ -1,5 +1,7 @@
 FROM node:24-bookworm-slim
 
+ENV repository=gavinln/local-docker.git
+
 RUN --mount=type=cache,target=/var/lib/apt,sharing=locked \
     --mount=type=cache,target=/var/cache/apt,sharing=locked \
      apt-get update \

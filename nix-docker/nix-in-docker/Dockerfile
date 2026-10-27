@@ -1,5 +1,5 @@
 # Multi-stage build using the official Nix container
-FROM nixos/nix:latest AS builder
+FROM nixos/nix:2.28.8 AS builder
 
 # Copy our nix files and setup our working dir.
 COPY . /tmp/build
@@ -22,6 +22,8 @@ RUN mkdir /tmp/nix-store-closure \
 # but they're fully self-contained so we don't need Nix anymore.
 
 FROM ubuntu:24.04
+
+ENV repository=gavinln/local-docker.git
 
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
