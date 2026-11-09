@@ -16,7 +16,7 @@ Also run Docker using [Kubernetes][40], [Minikube][50] and [Kubectl][60]
 [30]: https://docs.docker.com/compose/
 [40]: https://kubernetes.io/
 [50]: https://github.com/kubernetes/minikube
-[60]: https://kubernetes.io/docs/user-guide/kubectl-overview/
+[60]: https://kubernetes.io/docs/reference/kubectl/
 
 It creates an Ubuntu container in which to develop software and run the
 Docker commands and the rest of the Docker containers are created as
